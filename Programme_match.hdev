@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="22.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>* ----------------------------------------</c>
+<c>* APPLICATION DE CONTROLE</c>
+<c>* ----------------------------------------</c>
+<c>* </c>
+<c>* -------------------  Preparation  ----------------</c>
+<c>* General configuration of HDevelop.</c>
+<l>dev_update_pc ('off')</l>
+<l>dev_update_window ('on')</l>
+<l>dev_update_var ('on')</l>
+<c>* </c>
+<c>*PREPARATION DES AFFICHE </c>
+<l>dev_close_window ()</l>
+<l> read_image (Image,'C:/Users/Germain/Desktop/SOUTENANCE/Photo du 18 juin/FrameVideo1/frame00001.png')</l>
+<l> get_image_size (Image, Width, Height)</l>
+<l>RowDraw1 :=[]</l>
+<l>ColumnDraw1 :=[]</l>
+<l>RowDraw2 :=[]</l>
+<l>ColumnDraw2 :=[]</l>
+<c></c>
+<l>RowDraw11 :=[]</l>
+<l>ColumnDraw11 :=[]</l>
+<l>RowDraw22 :=[]</l>
+<l>ColumnDraw22 :=[]</l>
+<c></c>
+<l>SelectedImages :=[]</l>
+<l>Model_IDs :=[]</l>
+<l>WindowCMD := 0</l>
+<l>WindowAFF := 0</l>
+<c></c>
+<c></c>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, Width + 30, Width, Height, 'black', WindowCMD)</l>
+<l>dev_open_window (0, 0, Width, Height, 'black', WindowAFF)</l>
+<l>dev_set_window (WindowCMD)</l>
+<l>dev_set_part (0, 0, Height - 1, Width - 1)</l>
+<l>dev_set_window (WindowAFF)</l>
+<l>dev_set_part (0, 0, Height - 1, Width - 1)</l>
+<l>dev_display (Image)</l>
+<l>set_display_font (WindowCMD, 16, 'mono', 'true', 'false')</l>
+<c></c>
+<c></c>
+<l>choix_menu :=6</l>
+<l>while (choix_menu !=4)</l>
+<c></c>
+<l>dev_set_window (WindowCMD)</l>
+<c></c>
+<l>choix_menu (WindowCMD, choix_menu)</l>
+<l>dev_clear_window ()</l>
+<c></c>
+<l>switch (choix_menu)</l>
+<c>    </c>
+<l>    case 0:</l>
+<l>        definir_produits (Image, WindowAFF, WindowCMD, RowDraw1, RowDraw2, ColumnDraw1, ColumnDraw2)</l>
+<l>       break</l>
+<c>       </c>
+<l>    case 1:</l>
+<l>        RowDraw11 :=RowDraw1</l>
+<l>        ColumnDraw11 :=ColumnDraw1</l>
+<l>        RowDraw22 :=RowDraw2</l>
+<l>        ColumnDraw22 :=ColumnDraw2</l>
+<l>        ajouter_produits (Image, WindowAFF, WindowCMD, RowDraw11, RowDraw22, ColumnDraw11, ColumnDraw22, RowDraw1, RowDraw2, ColumnDraw1, ColumnDraw2)</l>
+<l>        break</l>
+<l>    case 2:</l>
+<l>        RowDraw11 :=RowDraw1</l>
+<l>        ColumnDraw11 :=ColumnDraw1</l>
+<l>        RowDraw22 :=RowDraw2</l>
+<l>        ColumnDraw22 :=ColumnDraw2</l>
+<l>        supprimer_produits (Image, WindowAFF, WindowCMD, RowDraw11, RowDraw22, ColumnDraw11, ColumnDraw22, RowDraw1, RowDraw2, ColumnDraw1, ColumnDraw2)</l>
+<c></c>
+<l>        break</l>
+<l>    case 3:</l>
+<l>        apprentissage (Image, WindowAFF, WindowCMD, RowDraw1, RowDraw2, ColumnDraw1, ColumnDraw2, 0.55, Model_IDs)</l>
+<l>        surveillance (Image, WindowAFF, WindowCMD, Model_IDs, Journal)</l>
+<c>        </c>
+<l>        break</l>
+<l>    case 4:</l>
+<c>        </c>
+<c>        </c>
+<l>        break</l>
+<c>     </c>
+<l>endswitch</l>
+<c></c>
+<l>endwhile</l>
+<c></c>
+<c></c>
+<c>* -------------------  Application End -----------------</c>
+<c>* </c>
+<l>dev_update_window ('on')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+<procedure name="choix_menu" access="local">
+<interface>
+<ic>
+<par name="WindowHandle" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="choix_menu" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>dev_clear_window ()</l>
+<l>dev_set_window (WindowHandle)</l>
+<l>set_display_font (WindowHandle, 50, 'Courier', 'true', 'false')</l>
+<c></c>
+<l>buttonWidth := 1000</l>
+<l>buttonHeight := 100</l>
+<l>buttonSpacing := 20</l>
+<l>buttonString := ['DEFINIR PRODUIT (S)','AJOUTER PRODUIT(S)','SUPPRIMER PRODUIT(S)','DEMARER LA SURVEILLANCE','FERMER LE PROGRAMME']</l>
+<c></c>
+<l>buttonX := [70:130:590] </l>
+<l>buttonY := gen_tuple_const(5, 20)</l>
+<c></c>
+<l>dev_disp_button (buttonString, buttonX, buttonY, buttonWidth, buttonHeight, 'black', 'white', 'red', WindowHandle, choix_menu)</l>
+<l>dev_clear_window ()</l>
+<l>return ()</l>
+</body>
+<docu id="choix_menu">
+<parameters>
+<parameter id="WindowHandle">
+<default_type>integer</default_type>
+<mixed_type>false</mixed_type>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="choix_menu">
+<default_type>integer</default_type>
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>integer</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+<procedure name="definir_produits" access="local">
+<interface>
+<io>
+<par name="Model_Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="WindowAffichage" base_type="ctrl" dimension="0"/>
+<par name="WindowCommande" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="RowDraw1" base_type="ctrl" dimension="0"/>
+<par name="RowDraw2" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw1" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw2" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>dev_set_window (WindowAffichage)</l>
+<l>dev_clear_window ()</l>
+<l>dev_display (Model_Image)</l>
+<l>*zoom_image_factor (Model_Image, ImageZoomed, 0.5, 0.5, 'constant')</l>
+<l>dev_set_window (WindowCommande)</l>
+<l>dev_clear_window ()</l>
+<c></c>
+<l>dev_set_color ('yellow')</l>
+<l>set_display_font (WindowCommande, 50, 'Courier', 'true', 'false')</l>
+<c></c>
+<c></c>
+<l>dev_set_window (WindowAffichage)</l>
+<c></c>
+<c>**REINITIALISATION DES PRODUITS</c>
+<l>RowDraw1:=[]</l>
+<l>RowDraw2:=[]</l>
+<l>ColumnDraw1 := []</l>
+<l>ColumnDraw1 := []</l>
+<c></c>
+<l>Button := 0</l>
+<l>Index :=0</l>
+<l>Row1:=0 </l>
+<l>Row2:=0</l>
+<c></c>
+<l>while (Button !=2 )</l>
+<l>    dev_set_window (WindowCommande)</l>
+<l>disp_message (WindowCommande,'CLICK GAUCHE POUR SELECTIONER ET AJUSTER ', 'window', 200, 20, 'black', 'true')</l>
+<l>disp_message (WindowCommande,'CLICK DROITE POUR VALIDER ', 'window', 320, 20, 'black', 'true')</l>
+<l>        dev_set_window (WindowAffichage)</l>
+<l>        draw_rectangle1 (WindowAffichage, Row1, Column1, Row2, Column2)  </l>
+<l>gen_rectangle1(ROI, Row1, Column1, Row2, Column2)</l>
+<l>    dev_set_window (WindowCommande)</l>
+<l>dev_clear_window ()</l>
+<l>if (Row1 !=Row2)</l>
+<l>    RowDraw1[Index]:=Row1</l>
+<l>RowDraw2 [Index]:=Row2</l>
+<l>ColumnDraw1 [Index]:= Column1</l>
+<l>ColumnDraw2 [Index]:= Column2</l>
+<l>Index:=Index + 1</l>
+<l>endif    </l>
+<c></c>
+<l>    disp_message (WindowCommande,'CLICK GAUCHE POUR AJOUTER  ', 'window', 200, 20, 'white', 'false')</l>
+<l>disp_message (WindowCommande,'CLICK MILIEUR / CTRL POUR TERMNER ', 'window', 330, 20, 'white', 'false')</l>
+<l>            get_mbutton (WindowAffichage, dummy, dummy, Button)</l>
+<l>            dev_clear_window ()</l>
+<l>endwhile</l>
+<c>    </c>
+<l>return ()</l>
+</body>
+<docu id="definir_produits">
+<parameters>
+<parameter id="ColumnDraw1"/>
+<parameter id="ColumnDraw2"/>
+<parameter id="Model_Image">
+<multivalue>optional</multivalue>
+<sem_type>image</sem_type>
+<type_list>
+<item>byte</item>
+<item>int1</item>
+<item>int2</item>
+<item>uint2</item>
+<item>int4</item>
+<item>int8</item>
+<item>real</item>
+<item>cyclic</item>
+<item>direction</item>
+<item>complex</item>
+<item>vector_field</item>
+</type_list>
+</parameter>
+<parameter id="RowDraw1"/>
+<parameter id="RowDraw2"/>
+<parameter id="WindowAffichage">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="WindowCommande">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+<procedure name="apprentissage" access="local">
+<interface>
+<io>
+<par name="Model_Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="WindowAffichage" base_type="ctrl" dimension="0"/>
+<par name="WindowCommande" base_type="ctrl" dimension="0"/>
+<par name="Rows_Draw1" base_type="ctrl" dimension="0"/>
+<par name="Rows_Draw2" base_type="ctrl" dimension="0"/>
+<par name="Columns_Draw1" base_type="ctrl" dimension="0"/>
+<par name="Columns_Draw2" base_type="ctrl" dimension="0"/>
+<par name="min_score" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Model_IDs" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>dev_set_color ('yellow')</l>
+<l>set_display_font (WindowCommande, 100, 'Courier', 'true', 'false')</l>
+<l>disp_message (WindowCommande,'APPRENTISSAGE EN COURS ', 'window', 70, 20, 'black', 'true')</l>
+<l>wait_seconds (1)</l>
+<l>for Index1 := 0 to |Rows_Draw1| -1 by 1</l>
+<l>    dev_set_window (WindowCommande)</l>
+<l>    dev_set_color ('red')</l>
+<l>    dev_display(Model_Image)</l>
+<l>    gen_rectangle1(ROI, Rows_Draw1[Index1], Columns_Draw1[Index1], Rows_Draw2[Index1], Columns_Draw2[Index1])</l>
+<l>    dev_display (ROI)</l>
+<l>    reduce_domain (Model_Image, ROI, ModelImage)</l>
+<l>    inspect_shape_model (ModelImage, ShapeModelImages, ShapeModelRegions, 10, 10)</l>
+<c>         </c>
+<l>    dev_clear_window ()</l>
+<l>     dev_display(ModelImage)</l>
+<c></c>
+<l>dev_display (ShapeModelRegions)</l>
+<l>    area_center (ShapeModelRegions, AreaModelRegions, RowModelRegions, ColumnModelRegions)</l>
+<l>    count_obj (ShapeModelRegions, HeightPyramid)</l>
+<l>    for i := 1 to HeightPyramid by 1</l>
+<l>    if (AreaModelRegions[i - 1] &gt;= 10)</l>
+<l>        NumLevels := i</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>wait_seconds (1)</l>
+<l>create_generic_shape_model (ModelID)</l>
+<l>set_generic_shape_model_param (ModelID, 'num_levels', NumLevels)</l>
+<l>set_generic_shape_model_param (ModelID, 'min_score', min_score)</l>
+<l>train_generic_shape_model (ModelImage, ModelID)</l>
+<c></c>
+<l>    Model_IDs[Index1] := ModelID</l>
+<l>endfor</l>
+<c>* Set search parameters.</c>
+<l>dev_set_color ('yellow')</l>
+<l>dev_clear_window ()</l>
+<l>set_display_font (WindowCommande, 100, 'Courier', 'true', 'false')</l>
+<l>disp_message (WindowCommande,'APPRENTISSAGE TERMINER ', 'window', 70, 20, 'black', 'true')</l>
+<l>*wait_seconds (1)</l>
+<l>dev_clear_window ()</l>
+</body>
+<docu id="apprentissage">
+<parameters>
+<parameter id="Columns_Draw1">
+<multivalue>optional</multivalue>
+<sem_type>rectangle.origin.x</sem_type>
+</parameter>
+<parameter id="Columns_Draw2">
+<multivalue>optional</multivalue>
+<sem_type>rectangle.corner.x</sem_type>
+</parameter>
+<parameter id="Model_IDs">
+<mixed_type>false</mixed_type>
+<multivalue>optional</multivalue>
+<sem_type>handle</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="Model_Image">
+<multichannel>optional</multichannel>
+<multivalue>false</multivalue>
+<sem_type>image</sem_type>
+<type_list>
+<item>byte</item>
+<item>int1</item>
+<item>int2</item>
+<item>uint2</item>
+<item>int4</item>
+<item>int8</item>
+<item>real</item>
+<item>cyclic</item>
+<item>direction</item>
+<item>complex</item>
+<item>vector_field</item>
+</type_list>
+</parameter>
+<parameter id="Rows_Draw1">
+<multivalue>optional</multivalue>
+<sem_type>rectangle.origin.y</sem_type>
+</parameter>
+<parameter id="Rows_Draw2">
+<multivalue>optional</multivalue>
+<sem_type>rectangle.corner.y</sem_type>
+</parameter>
+<parameter id="WindowAffichage">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="WindowCommande">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="min_score">
+<default_type>real</default_type>
+<multivalue>false</multivalue>
+<sem_type>real</sem_type>
+<type_list>
+<item>real</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+<procedure name="ajouter_produits" access="local">
+<interface>
+<io>
+<par name="Model_Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="WindowAffichage" base_type="ctrl" dimension="0"/>
+<par name="WindowCommande" base_type="ctrl" dimension="0"/>
+<par name="RowDraw11" base_type="ctrl" dimension="0"/>
+<par name="RowDraw22" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw11" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw22" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="RowDraw1" base_type="ctrl" dimension="0"/>
+<par name="RowDraw2" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw1" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw2" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>dev_set_window (WindowAffichage)</l>
+<l>dev_clear_window ()</l>
+<l>dev_display (Model_Image)</l>
+<l>*zoom_image_factor (Model_Image, ImageZoomed, 0.5, 0.5, 'constant')</l>
+<l>dev_set_window (WindowCommande)</l>
+<l>dev_clear_window ()</l>
+<c></c>
+<l>dev_set_color ('yellow')</l>
+<l>set_display_font (WindowCommande, 50, 'Courier', 'true', 'false')</l>
+<c></c>
+<c></c>
+<l>dev_set_window (WindowAffichage)</l>
+<l>dev_set_color ('red')</l>
+<c></c>
+<c>**AFFICHAGE DES ANCIENS PRODUITS DEFINI</c>
+<c></c>
+<l>for i := 0 to |RowDraw11|-1 by 1</l>
+<l>    gen_rectangle1(ROI, RowDraw11[i], ColumnDraw11 [i], RowDraw22[i],ColumnDraw22 [i])</l>
+<l>    dev_display (ROI)</l>
+<l>endfor</l>
+<c></c>
+<c>**INITIALISATION DES VARIABLES</c>
+<l>Button := 0</l>
+<l>Index := 0</l>
+<l>RowDraw1:=[]</l>
+<l>RowDraw2:=[]</l>
+<l>ColumnDraw1 := []</l>
+<l>ColumnDraw1 := []</l>
+<l>dev_set_color ('red')</l>
+<l>while (Button !=2 )</l>
+<l>    dev_set_window (WindowCommande)</l>
+<l>disp_message (WindowCommande,'CLICK GAUCHE POUR SELECTIONER ET AJUSTER ', 'window', 200, 20, 'black', 'true')</l>
+<l>disp_message (WindowCommande,'CLICK DROITE POUR VALIDER ', 'window', 320, 20, 'black', 'true')</l>
+<l>        dev_set_window (WindowAffichage)</l>
+<l>        draw_rectangle1 (WindowAffichage, Row1, Column1, Row2, Column2)  </l>
+<l>gen_rectangle1(ROI, Row1, Column1, Row2, Column2)</l>
+<l>    dev_set_window (WindowCommande)</l>
+<l>dev_clear_window ()</l>
+<l>if (Row1 !=Row2)</l>
+<l>    RowDraw1[Index]:=Row1</l>
+<l>    RowDraw2 [Index]:=Row2</l>
+<l>    ColumnDraw1 [Index]:= Column1</l>
+<l>    ColumnDraw2 [Index]:= Column2</l>
+<l>Index:=Index + 1</l>
+<l>endif    </l>
+<c></c>
+<l>    disp_message (WindowCommande,'CLICK GAUCHE POUR AJOUTER  ', 'window', 200, 20, 'white', 'false')</l>
+<l>disp_message (WindowCommande,'CLICK MILIEUR / CTRL POUR TERMNER ', 'window', 330, 20, 'white', 'false')</l>
+<l>            get_mbutton (WindowAffichage, dummy, dummy, Button)</l>
+<l>            dev_clear_window ()</l>
+<l>endwhile</l>
+<l>if (|RowDraw1|!=0)</l>
+<l>    RowDraw1:= [RowDraw11,RowDraw1]</l>
+<l>RowDraw2 := [RowDraw22,RowDraw2]</l>
+<l>ColumnDraw1 := [ColumnDraw11,ColumnDraw1]</l>
+<l>ColumnDraw2 := [ColumnDraw22,ColumnDraw2]</l>
+<l>else</l>
+<l>       RowDraw1:= RowDraw11</l>
+<l>RowDraw2 := RowDraw22</l>
+<l>ColumnDraw1 := ColumnDraw11</l>
+<l>ColumnDraw2 :=ColumnDraw22</l>
+<l>endif</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="ajouter_produits">
+<parameters>
+<parameter id="ColumnDraw1"/>
+<parameter id="ColumnDraw11"/>
+<parameter id="ColumnDraw2"/>
+<parameter id="ColumnDraw22"/>
+<parameter id="Model_Image">
+<multivalue>optional</multivalue>
+<sem_type>image</sem_type>
+<type_list>
+<item>byte</item>
+<item>int1</item>
+<item>int2</item>
+<item>uint2</item>
+<item>int4</item>
+<item>int8</item>
+<item>real</item>
+<item>cyclic</item>
+<item>direction</item>
+<item>complex</item>
+<item>vector_field</item>
+</type_list>
+</parameter>
+<parameter id="RowDraw1"/>
+<parameter id="RowDraw11"/>
+<parameter id="RowDraw2"/>
+<parameter id="RowDraw22"/>
+<parameter id="WindowAffichage">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="WindowCommande">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+<procedure name="supprimer_produits" access="local">
+<interface>
+<io>
+<par name="Model_Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="WindowAffichage" base_type="ctrl" dimension="0"/>
+<par name="WindowCommande" base_type="ctrl" dimension="0"/>
+<par name="RowDraw11" base_type="ctrl" dimension="0"/>
+<par name="RowDraw22" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw11" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw22" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="RowDraw1" base_type="ctrl" dimension="0"/>
+<par name="RowDraw2" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw1" base_type="ctrl" dimension="0"/>
+<par name="ColumnDraw2" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>dev_set_window (WindowAffichage)</l>
+<l>dev_clear_window ()</l>
+<l>dev_display (Model_Image)</l>
+<l>*zoom_image_factor (Model_Image, ImageZoomed, 0.5, 0.5, 'constant')</l>
+<l>dev_set_window (WindowCommande)</l>
+<l>dev_clear_window ()</l>
+<c></c>
+<l>dev_set_color ('yellow')</l>
+<l>set_display_font (WindowCommande, 50, 'Courier', 'true', 'false')</l>
+<c></c>
+<c></c>
+<l>dev_set_window (WindowAffichage)</l>
+<l>dev_set_color ('red')</l>
+<c></c>
+<c>**AFFICHAGE DES ANCIENS PRODUITS DEFINI</c>
+<l>dev_set_window (WindowCommande)</l>
+<l>disp_message (WindowCommande,'DEFILEMENT DES PRODUITS DEFINIR PREALABLEMENT', 'window', 100, 20, 'black', 'true')</l>
+<l>disp_message (WindowCommande,'CLICK DROITE POUR LE SUPPRIMER ', 'window', 200, 20, 'black', 'true')</l>
+<l>disp_message (WindowCommande,'CLICK GAUCHE POUR LE CONERVER', 'window', 300, 20, 'black', 'true')</l>
+<l>disp_message (WindowCommande,'CLICK MILIEUR /CTRL POUR QUITTEZ', 'window', 400, 20, 'black', 'true')</l>
+<l>Button := 0</l>
+<l>i := 0</l>
+<l>RowDraw1:=[]</l>
+<l>RowDraw2:=[]</l>
+<l>ColumnDraw1 := []</l>
+<l>ColumnDraw2 := []</l>
+<l>dev_set_color ('red')</l>
+<l>while (Button !=2 )</l>
+<l>    if(|RowDraw11| ==0)</l>
+<c>      </c>
+<l>        dev_set_window (WindowCommande)</l>
+<l>         dev_clear_window ()</l>
+<l>disp_message (WindowCommande,'ZERO DES PRODUITS DEFINIR', 'window', 100, 20, 'black', 'true')</l>
+<l>disp_message (WindowCommande,'CLICK MILIEUR /CTRL POUR QUITTEZ', 'window', 400, 20, 'black', 'true')</l>
+<c>       </c>
+<l>            get_mbutton (WindowAffichage, dummy, dummy, Button)</l>
+<c></c>
+<l>    else</l>
+<c>    </c>
+<l>        dev_set_window (WindowAffichage)</l>
+<l>        dev_clear_window ()</l>
+<l>        dev_display (Model_Image)</l>
+<l>gen_rectangle1(ROI, RowDraw11[i], ColumnDraw11 [i], RowDraw22[i],ColumnDraw22 [i])</l>
+<l>    dev_display (ROI)</l>
+<l>            get_mbutton (WindowAffichage, dummy, dummy, Button)</l>
+<c>            </c>
+<l>            if (Button == 4)</l>
+<l>                RowDraw11:= remove(RowDraw11, i)</l>
+<l>                RowDraw22 :=  remove(RowDraw22, i)</l>
+<l>                ColumnDraw11 :=  remove(ColumnDraw11, i)</l>
+<l>                ColumnDraw22 :=  remove(ColumnDraw22, i)</l>
+<l>                i:=0</l>
+<l>            endif</l>
+<l>            i:=i+1 </l>
+<l>            if(i==|RowDraw11|)</l>
+<l>                i:=0</l>
+<l>            endif</l>
+<l>    endif</l>
+<c>           </c>
+<l>endwhile</l>
+<l>if (|RowDraw11|!=0)</l>
+<l>       RowDraw1:= RowDraw11</l>
+<l>RowDraw2 := RowDraw22</l>
+<l>ColumnDraw1 := ColumnDraw11</l>
+<l>ColumnDraw2 :=ColumnDraw22</l>
+<l>endif</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="supprimer_produits">
+<parameters>
+<parameter id="ColumnDraw1"/>
+<parameter id="ColumnDraw11"/>
+<parameter id="ColumnDraw2"/>
+<parameter id="ColumnDraw22"/>
+<parameter id="Model_Image">
+<multivalue>optional</multivalue>
+<sem_type>image</sem_type>
+<type_list>
+<item>byte</item>
+<item>int1</item>
+<item>int2</item>
+<item>uint2</item>
+<item>int4</item>
+<item>int8</item>
+<item>real</item>
+<item>cyclic</item>
+<item>direction</item>
+<item>complex</item>
+<item>vector_field</item>
+</type_list>
+</parameter>
+<parameter id="RowDraw1"/>
+<parameter id="RowDraw11"/>
+<parameter id="RowDraw2"/>
+<parameter id="RowDraw22"/>
+<parameter id="WindowAffichage">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="WindowCommande">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+<procedure name="surveillance" access="local">
+<interface>
+<io>
+<par name="Model_Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="WindowAffichage" base_type="ctrl" dimension="0"/>
+<par name="WindowCommande" base_type="ctrl" dimension="0"/>
+<par name="Model_IDs" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Journal" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>dev_set_color ('yellow')</l>
+<c></c>
+<l>dev_set_window (WindowCommande)</l>
+<l>set_display_font (WindowCommande, 60, 'Courier', 'true', 'false')</l>
+<l>disp_message (WindowCommande,'SURVEILLANCE EN COURS ', 'window', 70, 20, 'black', 'true')</l>
+<l>wait_seconds (1)</l>
+<l>dev_clear_window ()</l>
+<l>dev_set_window (WindowAffichage)</l>
+<c></c>
+<c></c>
+<c></c>
+<l>for i := 51 to 27701 by 50</l>
+<l>    found := 0</l>
+<l>    lose := 0</l>
+<l>    CompteProduits :=[]</l>
+<l>    RectanglesR1 :=[]</l>
+<l>RectanglesR2 :=[]</l>
+<l>RectanglesC1 :=[]</l>
+<l>RectanglesC2 :=[]</l>
+<l>    read_image (SearchImage, 'C:/Users/Germain/Desktop/SOUTENANCE/Photo du 18 juin/FrameVideo1/frame' + i$'05')</l>
+<l>    for j :=0 to |Model_IDs|-1 by 1</l>
+<l>        find_generic_shape_model (SearchImage, Model_IDs[j], MatchResultID, NumMatchResult)</l>
+<l>    if (NumMatchResult &gt; 0)</l>
+<l>        dev_display (SearchImage)</l>
+<l>        get_generic_shape_model_result_object (Objects, MatchResultID, 'all', 'contours')</l>
+<l>        get_generic_shape_model_result (MatchResultID, 'all', 'num_match_result', NbProduit)</l>
+<c>        </c>
+<l>gen_region_contour_xld (Objects, Region, 'filled')</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>fill_up (ConnectedRegions, RegionFillUp1)</l>
+<l>smallest_rectangle1 (RegionFillUp1, Row1, Column1, Row2, Column2)</l>
+<l>if (|Row1|!=0)</l>
+<l>RectanglesR1 :=[RectanglesR1,Row1]</l>
+<l>RectanglesR2 :=[RectanglesR2,Row2]</l>
+<l>RectanglesC1 :=[RectanglesC1,Column1]</l>
+<l>RectanglesC2 :=[RectanglesC2,Column2]</l>
+<l>endif</l>
+<c></c>
+<l>        *wait_seconds (0.2)</l>
+<l>        found := found +1</l>
+<l>        CompteProduits[j]:=NbProduit</l>
+<l>    else</l>
+<l>        lose := lose +1</l>
+<l>        CompteProduits[j]:=0</l>
+<l>    endif</l>
+<c>    </c>
+<l>    endfor</l>
+<l>    if(|RectanglesR1| !=0)</l>
+<l>         gen_rectangle1 (Rectangle, RectanglesR1, RectanglesC1, RectanglesR2, RectanglesC2)</l>
+<l>*wait_seconds (0.5)</l>
+<l>        dev_display (Rectangle)</l>
+<l>        wait_seconds (5)</l>
+<l>    endif</l>
+<c>   </c>
+<l>    if (found == |Model_IDs| )</l>
+<l>        dev_set_window (WindowCommande)</l>
+<l>        disp_message (WindowCommande,'RAS : '+ found + ' / '+|Model_IDs|+'  Type de Produits Trouvés ' , 'window', 240, 240, 'green', 'true')</l>
+<c>         **COMPTE PRODUITS</c>
+<l>         RowCompt :=360</l>
+<l>            for j :=1 to |Model_IDs|by 1</l>
+<c>                </c>
+<l>                disp_message (WindowCommande,'Produit N°'+ j + ' ==&gt; '+CompteProduits[j-1] , 'window', RowCompt, 340, 'black', 'true')</l>
+<l>                RowCompt :=RowCompt+120</l>
+<l>            endfor</l>
+<l>        wait_seconds (0.0)</l>
+<l>        *dev_clear_window ()</l>
+<l>        disp_message (WindowCommande,'SURVEILLANCE EN COURS ', 'window', 70, 20, 'black', 'true')</l>
+<l>        dev_set_window (WindowAffichage)</l>
+<c></c>
+<l>    else</l>
+<l>        dev_set_window (WindowCommande)</l>
+<l>        disp_message (WindowCommande,'ALT : '+ found + ' / '+|Model_IDs|+'  Type de Produits Trouvés ' , 'window', 240, 240, 'red', 'true')</l>
+<c></c>
+<c></c>
+<c>        **COMPTE PRODUITS</c>
+<l>         RowCompt :=360</l>
+<l>            for j :=1 to |Model_IDs|by 1</l>
+<c>                </c>
+<l>                disp_message (WindowCommande,'Produit N°'+ j + ' ==&gt; '+CompteProduits[j-1] , 'window', RowCompt, 340, 'black', 'true')</l>
+<l>                RowCompt :=RowCompt+120</l>
+<l>            endfor</l>
+<l>        wait_seconds (0.0)</l>
+<l>       * dev_clear_window ()</l>
+<l>        disp_message (WindowCommande,'SURVEILLANCE EN COURS ', 'window', 70, 20, 'black', 'true')</l>
+<l>        dev_set_window (WindowAffichage)</l>
+<c>  </c>
+<l>    endif</l>
+<c>   </c>
+<c>    </c>
+<l>endfor</l>
+</body>
+<docu id="surveillance">
+<parameters>
+<parameter id="Journal"/>
+<parameter id="Model_IDs">
+<multivalue>optional</multivalue>
+<sem_type>rectangle.origin.y</sem_type>
+</parameter>
+<parameter id="Model_Image">
+<multichannel>optional</multichannel>
+<multivalue>false</multivalue>
+<sem_type>image</sem_type>
+<type_list>
+<item>byte</item>
+<item>int1</item>
+<item>int2</item>
+<item>uint2</item>
+<item>int4</item>
+<item>int8</item>
+<item>real</item>
+<item>cyclic</item>
+<item>direction</item>
+<item>complex</item>
+<item>vector_field</item>
+</type_list>
+</parameter>
+<parameter id="WindowAffichage">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="WindowCommande">
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>window</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

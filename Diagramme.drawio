@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2024-04-25T13:48:32.540Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="vEnWMzscPCStg6I4VELj" version="24.3.0" type="google">
+  <diagram name="Page-1" id="bd83a815-5ea8-2e97-e5ec-87c9f400f2fa">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1.5" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" style=";html=1;" />
+        <mxCell id="1" style=";html=1;" parent="0" />
+        <mxCell id="1516e18e63f93b96-24" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=1;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1400" y="890" width="60" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-25" value="NO ACTION" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=1;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1460" y="890" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-26" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=1;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1400" y="840" width="60" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-27" value="SQUAT" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=1;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1460" y="840" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-28" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=1;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1400" y="790" width="60" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-29" value="JUMP" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=1;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1460" y="790" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-1" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width: 100% ; height: 100% ; border-collapse: collapse&quot;&gt;&lt;tbody&gt;&lt;tr style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;&lt;th&gt;&lt;span style=&quot;border: 0px solid rgb(227, 227, 227); box-sizing: border-box; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(69,89,164,.5); --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; --tw-shadow: 0 0 transparent; --tw-shadow-colored: 0 0 transparent; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; color: rgb(13, 13, 13); font-family: Söhne, ui-sans-serif, system-ui, -apple-system, &amp;quot;Segoe UI&amp;quot;, Roboto, Ubuntu, Cantarell, &amp;quot;Noto Sans&amp;quot;, sans-serif, &amp;quot;Helvetica Neue&amp;quot;, Arial, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; white-space: pre-wrap; background-color: rgb(255, 255, 255);&quot;&gt;Observation&lt;/span&gt;&lt;br&gt;&lt;/th&gt;&lt;th&gt;0 x&lt;/th&gt;&lt;th&gt;0y&lt;/th&gt;&lt;th&gt;0z&lt;/th&gt;&lt;th&gt;1x&lt;/th&gt;&lt;th&gt;1y5&lt;/th&gt;&lt;/tr&gt;&lt;tr style=&quot;border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;&amp;nbsp;0&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background-color: #eaf2d3 ; border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;1&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;.&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;&amp;nbsp;2&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;.&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background-color: #eaf2d3 ; border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;.&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;.&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;.&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background-color: #eaf2d3 ; border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;.&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;.&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;.&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;.&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background-color: #eaf2d3 ; border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;96&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;97&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style=&quot;background-color: #eaf2d3 ; border: 1px solid #98bf21&quot;&gt;&lt;td style=&quot;background-color: #a7c942 ; color: #ffffff ; border: 1px solid #98bf21&quot;&gt;98&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;.&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;strokeColor=#c0c0c0;fillColor=#ffffff;overflow=fill;rounded=0;shadow=1;fontSize=14;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="90" y="164" width="1560" height="610" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-3" value="Title" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;rounded=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="70" width="780" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-6" value="" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1415" y="800" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-7" value="" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1415" y="850" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1516e18e63f93b96-9" value="" style="triangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14;direction=north;" vertex="1" parent="1">
+          <mxGeometry x="1415" y="900" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4q6LPXMD9qlG8U-FdESW-14" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1491" y="242" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4q6LPXMD9qlG8U-FdESW-15" value="" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1493" y="737" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4q6LPXMD9qlG8U-FdESW-16" value="" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1493" y="680" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4q6LPXMD9qlG8U-FdESW-21" value="" style="triangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14;direction=north;" vertex="1" parent="1">
+          <mxGeometry x="1491" y="454" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4q6LPXMD9qlG8U-FdESW-22" value="" style="triangle;whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14;direction=north;" vertex="1" parent="1">
+          <mxGeometry x="1493" y="510" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4q6LPXMD9qlG8U-FdESW-23" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;strokeWidth=3;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="1490" y="300" width="30" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
